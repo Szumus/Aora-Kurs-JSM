@@ -4,23 +4,43 @@ import { icons } from "../../constants";
 
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
-    <View className="w-full h-full items-center justify-center">
+    <View className="  gap-[1px]  items-center justify-center ">
       <Image
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        className="w-6 h-6"
+        className="w-5 h-5"
       />
+      <Text
+        className={`${
+          focused ? "font-psemibold" : "font-pregular"
+        } text-[8px]  `}
+        style={{ color: color }}
+      >
+        {name}
+      </Text>
     </View>
   );
 };
-//Problem 1. literówka w _lauout.jsx psierdoli wszystko :>
+//Problem 1. literówka w _layuout.jsx spierdoli wszystko :>
 
 const TabsLayout = () => {
-  console.log("TabsLayout is rendering...");
   return (
     <>
-      <Tabs screenOptions={{ headerShown: false }}>
+      <Tabs
+        screenOptions={{
+          tabBarShowLabel: false,
+
+          tabBarActiveTintColor: "#FFA001",
+          tabBarInactiveTintColor: "#CDCDE0",
+          tabBarStyle: {
+            backgroundColor: "#161622",
+            borderTopWidth: 1,
+            borderTopColor: "#232533 ",
+            height: 44,
+          },
+        }}
+      >
         <Tabs.Screen
           name="home"
           options={{
@@ -75,7 +95,7 @@ const TabsLayout = () => {
               <TabIcon
                 icon={icons.bookmark}
                 color={color}
-                name="Bookmark"
+                name="Saved"
                 focused={focused}
               />
             ),
